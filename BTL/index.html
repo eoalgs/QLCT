@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QLCanteen</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Căng Tin Trường Đại Học Hàng Hải</h1>
+      <img width="6%" src="img/VMU Logo.png">
+  </header>
+
+  <section id="reviews-section">
+    <!-- Nội dung Đánh Giá Góp Ý -->
+</section>
+  
+  <nav>
+    <ul>
+      <li><a href="#">Trang Chủ</a></li>
+      <li><a href="#">Danh Sách</a></li>
+      <li id="employee"><a href="#">Nhân Viên</a></li>
+      <li><a href="#" onclick="scrollToReviews()">Đánh Giá & Góp Ý</a></li>
+      
+      <div class="login-buttons">
+        <button onclick="toggleForm('login-form')">Đăng Nhập</button>
+        <button onclick="toggleForm('register-form')">Đăng Ký</button>
+      </div>
+      
+      <div class="user-info" id="user-info">
+        <span id="username-display"></span>
+        <button onclick="logout()">Logout</button>
+      </div>
+
+    </ul>
+  </nav>
+
+  <form id="login-form" class="login-form">
+    <label for="username">Tên Đăng Nhập:</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Mật Khẩu:</label>
+    <input type="password" id="password" name="password">
+    <button onclick="login()">Đăng Nhập</button>
+  </form>
+
+  <!-- Form đăng ký -->
+  <form id="register-form" class="register-form">
+    <label for="new-username">Tên Đăng Nhập:</label>
+    <input type="text" id="new-username" name="new-username">
+    <label for="new-password">Mật Khẩu:</label>
+    <input type="password" id="new-password" name="new-password">
+    <label for="re-password">Nhập Lại Mật Khẩu:</label>
+    <input type="password" id="new-password" name="re-password">
+    <button onclick="register()">Đăng Ký</button>
+  </form>
+  <br>
+  <section>
+    <h1>Tự Hào Là Căng Tin Số 1 Việt Nam!</h1>
+  </section>
+
+  <section>
+    <h2>Thực Đơn Chính:</h2>
+    <div class="menu-items">
+        <div class="menu-item">
+            <h3>Bánh Mì</h3>
+            <img width="40%" src="img/banhmi.jpeg" alt="">
+            <p>Giá: 15.000 VNĐ</p>
+            <button onclick="showModal('Bánh Mì', 15000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Bún Cá Cay</h3>
+            <img width="40%" src="img/buncacay.jpeg">
+            <p>Giá: 30.000 VNĐ</p>
+            <button onclick="showModal('Bún Cá Cay',30000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Bánh Bao</h3>
+            <img width="40%" src="img/banhbao.jpeg">
+            <p>Giá: 12.000 VNĐ</p>
+            <button onclick="showModal('Bánh Bao',12000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Mì Tôm SiuKay</h3>
+            <img width="40%" src="img/siukay.jpeg">
+            <p>Giá: 10.000 VNĐ</p>
+            <button onclick="showModal('Mì Tôm SiuKay',10000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Bún Bò Huế</h3>
+            <img width="40%" src="img/bunbohue.jpeg">
+            <p>Giá: 25.000 VNĐ</p>
+            <button onclick="showModal('Bún Bò Huế',25000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Bánh Mì Que Cay</h3>
+            <img width="40%" src="img/banhmique.jpeg">
+            <p>Giá: 1.500 VNĐ/cái</p>
+            <button onclick="showModal('Bánh Mì Que Cay',1500)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>CoCaCola</h3>
+            <img width="40%" src="img/coca.jpeg">
+            <p>Giá: 10.000 VNĐ</p>
+            <button onclick="showModal('CoCaCola',10000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Nước Lọc Lavie</h3>
+            <img width="40%" src="img/lavie.jpeg">
+            <p>Giá: 4.000 VNĐ</p>
+            <button onclick="showModal('Nước Lọc Lavie',4000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Cơm Rang</h3>
+            <img width="40%" src="img/comrang.jpeg">
+            <p>Giá: 35.000 VNĐ</p>
+            <button onclick="showModal('Cơm Rang',35000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Trứng Vịt Lộn</h3>
+            <img width="40%" src="img/tvl.jpeg">
+            <p>Giá: 5.000 VNĐ/quả</p>
+            <button onclick="showModal('Trứng Vịt Lộn',5000)">MUA</button>
+        </div>
+        <div class="menu-item">
+            <h3>Bánh Tráng Trộn</h3>
+            <img width="40%" src="img/btt.jpeg">
+            <p>Giá: 15.000 VNĐ</p>
+            <button onclick="showModal('Bánh Tráng Trộn',15000)">MUA</button>
+        </div>
+        <div class="menu-item">
+          <h3>Bim Bim Cay</h3>
+          <img width="40%" src="img/bim bim.jpeg">
+          <p>Giá: 10.000 VNĐ</p>
+          <button onclick="showModal('Bim Bim Cay',10000)">MUA</button>
+      </div>
+    </div>
+
+    <div class="pagination">
+    <a href="#">&laquo;&laquo;</a> <!-- Dấu mũi tên trỏ về trang đầu tiên -->
+    <a href="#">&laquo;</a>
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">...</a>
+    <a href="#">10</a>
+    <a href="#">&raquo;</a> <!-- Dấu mũi tên tiến tới trang tiếp theo -->
+    <a href="#">&raquo;&raquo;</a>
+    <!-- Thêm các liên kết phân trang tương ứng -->
+  </div>
+
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Your Webpage Title</title>
+      <style>
+        /* Các tùy chỉnh cho modal */
+        .modal {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          padding: 20px;
+          background-color: white;
+          border: 1px solid #ccc;
+          z-index: 1000;
+          text-align: center;
+        }
+    
+        /* Tùy chỉnh cho nền mờ xung quanh modal */
+        .modal-overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 999;
+        }
+    
+        /* Tùy chỉnh cho nút đóng modal */
+        .close-button {
+          cursor: pointer;
+        }
+      </style>
+    </head>
+    <body>
+    
+    
+      <!-- Modal -->
+      <div id="myModal" class="modal">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <label for="quantity">Số lượng:</label>
+        <input type="number" id="quantity" min="1" value="1">
+        <br><br>
+        <button onclick="buyItem()">Mua</button>
+        <button onclick="closeModal()">Hủy</button>
+      </div>
+    
+      <!-- Modal overlay (nền mờ) -->
+      <div id="modalOverlay" class="modal-overlay"></div>
+
+      <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm món ăn...">
+      </div>
+      <br><br>
+
+      <div class="employee-menu-content">
+        <!-- Nội dung menu Nhân Viên -->
+        <h2>Danh Sách Nhân Viên:</h2>
+        <ul id="employee-list"></ul>
+        </div>
+        <div id="employee-details"></div>
+        <div id="employee-actions">
+            <button onclick="addEmployee()">Thêm Nhân Viên</button>
+            <button onclick="editEmployee()">Sửa Thông Tin</button>
+            <button onclick="deleteEmployee()">Xóa Nhân Viên</button>
+        </div>
+    </div>
+    
+
+</section>
+<div class="danh-gia">
+  <h2>Đánh Giá & Góp Ý</h2>
+  <p>Bạn có thể viết nội dung đánh giá của mình ở đây...</p>
+  <textarea class="review-textarea" placeholder="Viết đánh giá của bạn"></textarea>
+  <button class="submit-button" onclick="submitReview()">Gửi Đánh Giá</button>
+</div>
+
+  <footer>
+    <p>&copy; 2023 ĐHHHVN </p>
+  </footer>
+</body>
+</html>
