@@ -98,9 +98,39 @@ function submitReview() {
   }
 
   function login() {
-    // Xử lý đăng nhập, gửi dữ liệu đến server nếu cần
-    console.log('Đăng nhập');
-  }
+    var usernameInput = document.getElementById('username').value;
+    if (usernameInput.trim() !== '') {
+        // Ẩn form đăng nhập
+        document.getElementById('login-form').style.display = 'none';
+        
+        // Hiển thị thông tin người dùng và nút đăng xuất
+        var userInfoDiv = document.getElementById('user-info');
+        userInfoDiv.style.display = 'block';
+        document.getElementById('logged-username').innerText = usernameInput;
+
+        var logoutButton = document.querySelector('.logout-button');
+        logoutButton.style.display = 'block';
+        
+        // Thay đổi nội dung nút đăng nhập thành tên người dùng
+        var loginButton = document.querySelector('#login-form button');
+        loginButton.innerHTML = usernameInput + ' <span class="logout-button">(Đăng xuất)</span>';
+        loginButton.onclick = logout; // Gắn sự kiện click cho nút đăng xuất
+    }
+}
+
+function logout() {
+  // Hiển thị form đăng nhập và ẩn thông tin người dùng
+  document.getElementById('login-form').style.display = 'block';
+  document.getElementById('user-info').style.display = 'none';
+
+  // Ẩn nút đăng xuất
+  document.querySelector('.logout-button').style.display = 'none';
+
+  // Thay đổi nội dung nút đăng nhập về trạng thái ban đầu
+  var loginButton = document.querySelector('#login-form button');
+  loginButton.innerHTML = 'Đăng nhập';
+  loginButton.onclick = login; // Gắn sự kiện click cho nút đăng nhập
+}
 
   function register() {
     // Xử lý đăng ký, gửi dữ liệu đến server nếu cần
@@ -125,19 +155,7 @@ function submitReview() {
     reviewTextarea.focus();
 }
 
-function scrollToReviews() {
-  const reviewsSection = document.querySelector('.employee-menu-content');
-  reviewsSection.scrollIntoView({ behavior: 'smooth' });
 
-  // Focus vào ô textarea
-  const reviewTextarea = document.getElementById('review-textarea');
-  reviewTextarea.focus();
-}
-
-function addEmployee() {
-  // Xử lý khi bấm nút "Thêm Nhân Viên"
-  console.log('Thêm Nhân Viên');
-}
 document.querySelectorAll('nav ul li').forEach(function(menuItem) {
   menuItem.addEventListener('click', function() {
       // Loại bỏ lớp selected-menu từ tất cả các menu
@@ -163,75 +181,6 @@ document.querySelectorAll('nav ul li').forEach(function(menuItem) {
       // Thêm các chức năng xử lý tương ứng ở đây nếu cần
   });
 });
-function addEmployee() {
-  // Chức năng Thêm Nhân Viên
-  const employee = {};
-  employee.name = prompt('Nhập tên Nhân Viên:');
-  employee.age = prompt('Nhập tuổi Nhân Viên:');
-  employee.gender = prompt('Nhập giới tính Nhân Viên:');
-  employee.workingHours = prompt('Nhập khung giờ làm việc của Nhân Viên:');
-
-  if (employee.name && employee.age && employee.gender && employee.workingHours) {
-      employees.push(employee);
-      updateEmployeeList();
-  }
-}
-
-function editEmployee() {
-  // Chức năng Sửa Thông Tin Nhân Viên
-  const selectedEmployeeIndex = prompt('Chọn Nhân Viên cần sửa:');
-  if (selectedEmployeeIndex >= 0 && selectedEmployeeIndex < employees.length) {
-      const editedEmployee = employees[selectedEmployeeIndex];
-      editedEmployee.name = prompt('Nhập tên mới cho Nhân Viên:', editedEmployee.name);
-      editedEmployee.age = prompt('Nhập tuổi mới cho Nhân Viên:', editedEmployee.age);
-      editedEmployee.gender = prompt('Nhập giới tính mới cho Nhân Viên:', editedEmployee.gender);
-      editedEmployee.workingHours = prompt('Nhập khung giờ làm việc mới cho Nhân Viên:', editedEmployee.workingHours);
-      
-      updateEmployeeList();
-  }
-}
-
-function deleteEmployee() {
-  // Chức năng Xóa Nhân Viên
-  const selectedEmployeeIndex = prompt('Chọn Nhân Viên cần xóa:');
-  if (selectedEmployeeIndex >= 0 && selectedEmployeeIndex < employees.length) {
-      employees.splice(selectedEmployeeIndex, 1);
-      updateEmployeeList();
-  }
-}
-
-const employees = []; // Mảng lưu trữ thông tin nhân viên
-function updateEmployeeList() {
-  // Cập nhật danh sách nhân viên hiển thị
-  const employeeList = document.getElementById('employee-list');
-  employeeList.innerHTML = ''; // Xóa hết các mục hiện tại
-
-  for (let i = 0; i < employees.length; i++) {
-      const newEmployeeItem = document.createElement('li');
-      newEmployeeItem.textContent = `Tên: ${employees[i].name}, Tuổi: ${employees[i].age}, Giới Tính: ${employees[i].gender}, Khung Giờ Làm Việc: ${employees[i].workingHours}`;
-      newEmployeeItem.addEventListener('click', function() {
-          displayEmployeeDetails(i);
-      });
-      employeeList.appendChild(newEmployeeItem);
-  }
-}
-
-function displayEmployeeDetails(index) {
-  // Hiển thị thông tin chi tiết của nhân viên được chọn
-  const employeeDetails = document.getElementById('employee-details');
-  employeeDetails.innerHTML = `Thông tin chi tiết của Nhân Viên:
-                              <p>Tên: ${employees[index].name}</p>
-                              <p>Tuổi: ${employees[index].age}</p>
-                              <p>Giới Tính: ${employees[index].gender}</p>
-                              <p>Khung Giờ Làm Việc: ${employees[index].workingHours}</p>`;
-}
-
-function clearEmployeeDetails() {
-  // Xóa thông tin chi tiết của nhân viên khi không có nhân viên nào được chọn
-  const employeeDetails = document.getElementById('employee-details');
-  employeeDetails.innerHTML = '';
-}
-
 
 // Xử lý khi chọn menu
 document.querySelectorAll('nav ul li').forEach(function(menuItem) {
@@ -259,9 +208,9 @@ document.querySelectorAll('nav ul li').forEach(function(menuItem) {
       updateEmployeeList();
   });
 });
-employees.push({ name: 'Nguyễn Văn A', age: 25, gender: 'Nam', workingHours: '8:00 - 17:00' });
-employees.push({ name: 'Trần Thị B', age: 28, gender: 'Nữ', workingHours: '9:00 - 18:00' });
-employees.push({ name: 'Lê Hoàng C', age: 30, gender: 'Nam', workingHours: '10:00 - 19:00' });
-        
-        // Cập nhật danh sách và hiển thị thông tin chi tiết cho nhân viên đầu tiên
-updateEmployeeList();
+
+function toggleTable(tableNumber) {
+  var table = document.getElementById('table' + tableNumber);
+  table.classList.toggle('booked');
+  table.classList.toggle('available');
+}
