@@ -20,8 +20,8 @@
   <nav>
     <ul>
       <li><a href="#">Trang Chủ</a></li>
-      <li><a href="#">Danh Sách</a></li>
-      <li id="employee"><a href="#">Nhân Viên</a></li>
+      <li><a href="#" onclick="scrollToMenu()">Danh Sách</a></li>
+      <li><a href="#" onclick="scrollToSchedule()">Nhân Viên</a></li>
       <li><a href="#" onclick="scrollToReviews()">Đánh Giá & Góp Ý</a></li>
       
       <div class="login-buttons">
@@ -63,7 +63,7 @@
 
   <section>
     <h2>Thực Đơn Chính:</h2>
-    <div class="menu-items">
+    <div class="menu-items" id="menu">
         <div class="menu-item">
             <h3>Bánh Mì</h3>
             <img width="40%" src="img/banhmi.jpeg" alt="">
@@ -214,26 +214,88 @@
 
       <div class="employee-menu-content">
         <!-- Nội dung menu Nhân Viên -->
-        <h2>Danh Sách Nhân Viên & Ngày Làm Việc:</h2>
-        <ul id="employee-list"></ul>
-        <table bgcolor="white" width="1450" height="100" border="2">
+        <h2>Danh Sách Nhân Viên:</h2>
+        <table id="employees-table" bgcolor="white" width="1450" height="100" border="2">
           <tr bgcolor="grey" align="center">
-            <th class="small-cell">Thứ 2</th>
-            <th class="small-cell">Thứ 3</th>
-            <th class="small-cell">Thứ 4</th>
-            <th class="small-cell">Thứ 5</th>
-            <th class="small-cell">Thứ 6</th>
-            <th class="small-cell">Thứ 7</th>
-            <th class="small-cell">Chủ Nhật</th>
+            <th class="small-cell">Tên Nhân Viên</th>
+            <th class="small-cell">Giới Tính</th>
+            <th class="small-cell">Công Việc</th>
+            <th class="small-cell">Số Điện Thoại</th>
+            <th class="small-cell">Giờ Làm Việc</th>
+            <th class="small-cell">Trạng Thái</th>
+            <th class="small-cell">Lương/Giờ</th>
           </tr>
           <tr height="50" align="center">
-            <th width="100">Nguyễn Văn A</th>
-            <th width="100">Nguyễn Văn A</th>
-            <th width="100">Nguyễn Văn A</th>
-            <th width="100">Nguyễn Văn A</th>
-            <th width="100">Nguyễn Văn A</th>
-            <th width="100">Nguyễn Văn A</th>
-            <th width="100">Ngủ Nghỉ Khỏe</th>
+            <td width="100">Nguyễn Anh Long</td>
+            <td width="100">Nam</td>
+            <td width="100">Phụ Bếp</td>
+            <td width="100">0323456789</td>
+            <td width="100">Từ 6h Đến 17h</td>
+            <td width="100">Đang Làm Việc</td>
+            <td width="100">1 Jack</td>
+          </tr>
+          <tr height="50" align="center">
+            <td width="100">Vũ Thị Tuyết</td>
+            <td width="100">Nữ</td>
+            <td width="100">Thu Ngân</td>
+            <td width="100">0987654321</td>
+            <td width="100">Từ 6h Đến 17h</td>
+            <td width="100">Đang Làm Việc</td>
+            <td width="100">1 Jack</td>
+          </tr>
+          <tr height="50" align="center">
+            <td width="100">Trần Văn Luộc</td>
+            <td width="100">Nam</td>
+            <td width="100">Bếp Trưởng</td>
+            <td width="100">0399339999</td>
+            <td width="100">Từ 6h Đến 17h</td>
+            <td width="100">Đang Làm Việc</td>
+            <td width="100">1 Jack</td>
+          </tr>
+          <tr height="50" align="center">
+            <td width="100">Quất Thị Nện</td>
+            <td width="100">Nữ</td>
+            <td width="100">Rửa Bát</td>
+            <td width="100">0304050607</td>
+            <td width="100">Từ 6h Đến 17h</td>
+            <td width="100">Đang Làm Việc</td>
+            <td width="100">1 Jack</td>
+          </tr>
+          <tr height="50" align="center">
+            <td width="100">Hà Duy Kiên</td>
+            <td width="100">Nam</td>
+            <td width="100">Bếp Phó</td>
+            <td width="100">0908070605</td>
+            <td width="100">Từ 6h Đến 17h</td>
+            <td width="100">Đang Làm Việc</td>
+            <td width="100">1 Jack</td>
+          </tr>
+          <tr height="50" align="center">
+            <td width="100">Lê Văn Đỗ Huy</td>
+            <td width="100">Nam</td>
+            <td width="100">Phục Vụ</td>
+            <td width="100">0866771508</td>
+            <td width="100">Từ 6h Đến 17h</td>
+            <td width="100">Đã Đuổi Việc</td>
+            <td width="100">1 Xu</td>
+          </tr>
+          <tr height="50" align="center">
+            <td width="100">Ngô Như Ý</td>
+            <td width="100">Nữ</td>
+            <td width="100">Phục Vụ</td>
+            <td width="100">0815671102</td>
+            <td width="100">Từ 6h Đến 17h</td>
+            <td width="100">Nhân Viên Mới</td>
+            <td width="100">1 Chỉ</td>
+          </tr>
+          <tr height="50" align="center">
+            <td width="100">Lý Mạc Sầu</td>
+            <td width="100">Nữ</td>
+            <td width="100">Phụ Bếp</td>
+            <td width="100">0377654321</td>
+            <td width="100">Từ 6h Đến 17h</td>
+            <td width="100">Nghỉ Phép</td>
+            <td width="100">1 Củ</td>
           </tr>
         </table>
     </div>
@@ -271,7 +333,7 @@
 </div>
 
   <footer>
-    <p>&copy; 2023 ĐHHHVN </p>
+    <h3>Được Phục Vụ Quý Khách Luôn Là Niềm Tự Hào Của Căng Tin Chúng Tôi</h3>
   </footer>
 </body>
 </html>
