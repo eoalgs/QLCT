@@ -214,3 +214,13 @@ function toggleTable(tableNumber) {
   table.classList.toggle('booked');
   table.classList.toggle('available');
 }
+
+function scrollToSchedule() {
+  // Sử dụng JavaScript để cuộn màn hình đến bảng có ID là "schedule-table"
+  var scheduleTable = document.getElementById('employees-table');
+  scheduleTable.scrollIntoView({ behavior: 'smooth' });
+}
+function scrollToMenu() {
+  var scheduleTable = document.getElementById('menu');
+  scheduleTable.scrollIntoView({ behavior: 'smooth' });
+}
