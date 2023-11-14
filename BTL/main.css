@@ -10,14 +10,16 @@ header {
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   text-shadow: 2px 2px 4px #ff0000;
+  text-align: center;
 }
 
 section {
   overflow: hidden;
   position: relative;
 }
+
 
 
 section h1 {
@@ -58,7 +60,6 @@ section h1 {
 header img {
   width: 8%;
 }
-
 
 
 ul {
@@ -123,6 +124,7 @@ nav ul li a {
   color: #333;
   text-decoration: none;
 }
+
 button {
   background-color: #4CAF50;
   color: #fff;
@@ -131,12 +133,15 @@ button {
   border-radius: 4px;
   cursor: pointer;
 }
+
 button:hover {
   background-color: #45a049;
 }
+
 .menu-item:hover {
   transform: scale(1.05);
 }
+
 .menu-item-info {
   padding: 15px;
   text-align: center;
@@ -179,6 +184,22 @@ button:hover {
       max-width: 300px; /* Đặt kích thước tối đa */
       margin: 0 auto; /* Canh giữa khung form */
     }
+  
+    .user-info {
+      display: none;
+      margin-top: 10px;
+  }
+
+  .user-info span {
+      font-weight: bold;
+  }
+
+  .logout-button {
+      display: none;
+      cursor: pointer;
+      color: blue;
+      text-decoration: underline;
+  }
 
 /* Style cho form đăng ký */
 .register-form {
@@ -215,6 +236,7 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
 }
+
 .employee-container {
   max-width: 800px;
   margin: 20px auto;
@@ -224,8 +246,72 @@ button:hover {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .employee-menu {
   display: none;
+}
+.tables-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.note {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.table {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #ddd;
+  margin: 5px;
+  text-align: center;
+  line-height: 100px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.table.booked {
+  background-color: #ff8080; /* Màu đỏ cho bàn đã đặt */
+}
+
+.table.available {
+  background-color: #8cff66; /* Màu xanh cho bàn trống */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+td.small-cell {
+  width: 80px; /* Đặt kích thước cho ô nhỏ lại */
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 9px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-size: 19px;
+}
+
+td {
+  font-size: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #e5e5e5;
 }
 
 .menu-item img {
